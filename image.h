@@ -7,5 +7,5 @@ typedef struct{
 }Image;
 
 Image* new_Image(int row,int col,int channel);
-
+void destroy_Image(Image* Im);
 #endif

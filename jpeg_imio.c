@@ -39,7 +39,12 @@ int read_image(char * filename,Image ** Im){
     jpeg_read_header(&cinfo,TRUE);
     jpeg_start_decompress(&cinfo);
     
-    *Im = new_Image(cinfo.output_height, cinfo.output_width, cinfo.output_components);
+    if(*Im == NULL)
+        *Im = new_Image(cinfo.output_height, cinfo.output_width, cinfo.output_components);
+    else{
+        destroy_Image(*Im);
+        *Im = new_Image(cinfo.output_height, cinfo.output_width, cinfo.output_components);
+    }
     
     
     row_stride = cinfo.output_width * cinfo.output_components;

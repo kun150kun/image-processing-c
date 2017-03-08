@@ -26,5 +26,9 @@ Image* new_Image(int row,int col,int channel){
     return p;
 }
 
+void destroy_Image(Image* Im){
+    free(Im);
+    return;
+}
 
 #endif
